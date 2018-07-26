@@ -28,7 +28,7 @@ namespace Canti.Blockchain.P2P
         private Thread PeerConnectionThread;
 
         // Define data handling context
-        public LevinProtocol Context;
+        private IProtocol Context;
 
         // public variables
         public Logger Logger;

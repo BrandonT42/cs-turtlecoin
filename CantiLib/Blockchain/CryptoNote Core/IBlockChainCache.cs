@@ -4,19 +4,16 @@
 // Please see the included LICENSE file for more information.
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Canti.Blockchain
 {
     public class IBlockchainCache
     {
-        IBlockchainCache parent;
-
-        uint BlockIndex = 0;
-        uint GlobalOutputIndex = 0;
-        ulong Amount = 0;
-        string[] chainLeaves;
+        IBlockchainCache parent { get; set; }
+        uint BlockIndex { get; set; }
+        uint GlobalOutputIndex { get; set; }
+        ulong Amount { get; set; }
+        string[] chainLeaves { get; set; }
 
         public bool hasBlock(string blockHash)
         {
@@ -56,9 +53,9 @@ namespace Canti.Blockchain
             return cache;
         }
 
-IBlockchainCache getParent()
+        IBlockchainCache getParent()
         {
             return parent;
         }
-}
+    }
 }
