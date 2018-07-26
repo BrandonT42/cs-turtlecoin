@@ -4,27 +4,46 @@ using Canti.Blockchain.Crypto;
 
 namespace TestZone
 {
-    class Program
+    partial class Program
     {
         static void Main(string[] args)
         {
+            // Begin testing!
             Console.WriteLine("Add some code here to mess around with the codebase!");
-            Console.WriteLine();
-            Console.WriteLine("To get you started, here's a set of private keys and their corresponding address!");
 
-            WalletKeys keys = KeyOps.GenerateWalletKeys();
+            // Get menu choice
+            while (true)
+            {
+                // Write command menu
+                Console.WriteLine("Menu:");
+                Console.WriteLine(" 1. Test wallet key generation");
+                Console.WriteLine(" 2. Test encryption");
+                Console.WriteLine(" 3. Exit");
+                Console.Write("Enter your selection: ");
 
-            string address = Addresses.AddressFromKeys(keys.spendKeys.publicKey,
-                                                       keys.viewKeys.publicKey);
+                // Get selection
+                var Selection = Console.ReadKey();
+                Console.WriteLine();
 
-            Console.WriteLine();
+                // Read selection
+                switch (Selection.KeyChar)
+                {
+                    // Test key generation
+                    case '1':
+                        TestKeyGeneration();
+                        continue;
 
-            Console.WriteLine($"Private spend key: {keys.spendKeys.privateKey.ToString()}");
-            Console.WriteLine($"Private view key: {keys.viewKeys.privateKey.ToString()}");
+                    // Test cryptography
+                    case '2':
+                        TestCryptography();
+                        continue;
 
-            Console.WriteLine();
-
-            Console.WriteLine($"Public address: {address}");
+                    // Exit
+                    case '3':
+                        Environment.Exit(0);
+                        break;
+                }
+            }
         }
     }
 }
